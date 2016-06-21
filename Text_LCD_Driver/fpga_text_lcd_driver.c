@@ -96,7 +96,7 @@ int __init iom_fpga_text_lcd_init(){
 
 }
 
-int __exit iom_fpga_text_lcd_exit(){
+void __exit iom_fpga_text_lcd_exit(){
 	// io un mapping routine
 	iounmap(iom_fpga_text_lcd_addr);
 
@@ -104,7 +104,7 @@ int __exit iom_fpga_text_lcd_exit(){
 	unregister_chrdev(IOM_FPGA_TEXT_LCD_MAJOR, IOM_FPGA_TEXT_LCD_NAME);
 }
 
-module_init(iom_fpga_text_lcd_init);
+module_init(iom_fpga_text_lcd_init); // kernel 버전 3.0 이상부터 사용하는 init 함수 등록 매크로
 module_exit(iom_fpga_text_lcd_exit);
 
 MODULE_LICENSE("GPL");
